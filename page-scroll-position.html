@@ -1,24 +1,13 @@
 
 <!--
 `page-scroll-position`
-A Web Component that hold the current scroll value on the entire document.
+A Web Component that hold the current scroll value relative to the entire document.
 -->
-
 <script>
-
-customElements.define('page-scroll-position',
-
-  class PageScrollPosition extends HTMLElement
-  {
-    constructor()
-    {
-      super();
+  class PageScrollPosition extends HTMLElement {
+    attachedCallback() {
       // start off at 0
       this.value = 0.0;
-    }
-
-    connectedCallback()
-    {
       let element = document;
       let valueChangedEvent = new CustomEvent('value-changed', {detail: {value: 0.0}});
       this.dispatchEvent(valueChangedEvent);
@@ -38,7 +27,5 @@ customElements.define('page-scroll-position',
       });
     }
   }
-
-);
-
+  document.registerElement('page-scroll-position', PageScrollPosition);
 </script>
